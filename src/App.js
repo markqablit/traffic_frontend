@@ -39,11 +39,6 @@ function App({ mapCenterProp, zoomProp, activeButton, setActiveButton, onMarkerU
   const [mapCenter, setMapCenter] = useState(moscowCoordinates);
   const [zoom, setZoom] = useState(11);
   const [centerLock, setCenterLock] = useState(false);
-  const [isToggled, setIsToggled] = useState(false);
-
-  const handleToggle = () => {
-    setIsToggled(!isToggled);
-  };
 
   useEffect(() => {
     if (mapCenterProp && !centerLock) {
@@ -65,7 +60,6 @@ function App({ mapCenterProp, zoomProp, activeButton, setActiveButton, onMarkerU
   }, []);
 
   const setMetroStationMarkers = useCallback(() => {
-    console.log("setMetroStationMarkers");
     return stations.map((station) => (
       <DynamicCircleMarker key={station.id} station={station} showTooltip={showTooltips} />
     ));
@@ -97,15 +91,10 @@ function App({ mapCenterProp, zoomProp, activeButton, setActiveButton, onMarkerU
 
   const handleButtonClick = (buttonNumber) => {
     setActiveButton(buttonNumber);
-    console.log(buttonNumber);
     if (buttonNumber === 2 ||buttonNumber === 3) {
       setMarkers([]);
     }
   };
-
-  useEffect(() => {
-    console.log(activeButton);  // Сработает, когда activeButton обновится
-  }, [activeButton]);
 
   const handleClearMarkers = () => {
     setMarkers([]);  // Сбрасываем метки в App.js

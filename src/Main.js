@@ -60,7 +60,7 @@ function Main() {
     
           if (response.ok) {
             const text = await response.text(); // Получаем текст ответа
-            console.log(text);
+            //console.log(text);
             if (text) {
               const requstResult = JSON.parse(text);
               //console.log('Response from server:', requstResult.data_road);
@@ -92,7 +92,7 @@ function Main() {
 
     const handleStationClick = (coordinates) => {//for search
       const [lat, lng] = coordinates.split(',').map(Number);
-      console.log(lat, lng);
+      //console.log(lat, lng);
       setMapCenter([lat, lng]);
       setZoom(14);
     };

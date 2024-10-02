@@ -9,11 +9,11 @@ const Input = ({ area, setArea,area_office, setAreaOffic, isResidential, setIsRe
         <h3>
           <center>Жилая площадь:</center>
         </h3>
-        <input type="number" value={area} onChange={(e) => setArea(e.target.value)} required />
+        <input type="number" value={area} defaultValue={0} onChange={(e) => setArea(e.target.value)} required/>
         <h3>
         <center>Рабочая/Офисная площадь:</center>
         </h3>
-        <input type="number" value={area_office} onChange={(e) => setAreaOffic(e.target.value)} required />
+        <input type="number" value={area_office} defaultValue={0} onChange={(e) => setAreaOffic(e.target.value)} required/>
         <h2>Настройте тип помещения:</h2>
         <h3>
           <center>Жилые помещения:</center>

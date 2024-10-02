@@ -49,11 +49,6 @@ function AppReady({ userMarkers, requstResult, stations }) {
     return sortedMarkers;
   }
 
-  useEffect(() => {
-    console.log('Result Metro Markers:', resultMetroMarkers);
-    console.log('Result Road Markers:', resultRoadMarkers);
-  }, [requstResult]);
-
 
   return (
     <div className="AppReady">
@@ -76,7 +71,7 @@ function AppReady({ userMarkers, requstResult, stations }) {
         {resultRoadMarkers.map((road, index) => {
           if (road.coordinates && road.coordinates.length > 0) {
             const reversedCoordinates = road.coordinates.map(coord => [coord[1], coord[0]]);
-            console.log(road.point);
+            //console.log(road.point);
             var roadColor;
             if(road.point>4){
               roadColor = "darkred"
@@ -95,8 +90,8 @@ function AppReady({ userMarkers, requstResult, stations }) {
                   <div>
                     <h3>{road.name}</h3>
                     <p>Тип дороги: {road.type}</p>
-                    <p>Пропускная способность утром: {road.capacity_m}</p>
-                    <p>Пропускная способность вечером: {road.capacity_e}</p>
+                    <p>Трафик утром: <strong>{road.capacity_m}</strong></p>
+                    <p>Трафик вечером: <strong>{road.capacity_e}</strong></p>
                   </div>
                 </Popup>
               </Polyline>
@@ -117,10 +112,10 @@ function AppReady({ userMarkers, requstResult, stations }) {
                   <div>
                     <h3>{marker.name}</h3>
                     <p>Линия: {marker.Line}</p>
-                    <p>Пассажиры в (утро): {marker.people_flow_in_m}</p>
-                    <p>Пассажиры в (вечер): {marker.people_flow_in_e}</p>
-                    <p>Пассажиры из (утро): {marker.people_flow_out_m}</p>
-                    <p>Пассажиры из (вечер): {marker.people_flow_out_e}</p>
+                    <p>Пассажиры вход (утро): <strong>{marker.people_flow_in_m}</strong></p>
+                    <p>Пассажиры выход (утро): <strong>{marker.people_flow_out_m}</strong></p>
+                    <p>Пассажиры вход (вечер): <strong>{marker.people_flow_in_e}</strong></p>
+                    <p>Пассажиры выход (вечер): <strong>{marker.people_flow_out_e}</strong></p>
                   </div>
                 </Popup>
                 <Tooltip direction="top" offset={[0, -10]} opacity={1} permanent>
